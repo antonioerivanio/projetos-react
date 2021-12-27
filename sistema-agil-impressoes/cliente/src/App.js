@@ -1,3 +1,4 @@
+import Produtos from './componentes/Produtos';
 import dadosProdutos from './utils/dadosProdutos';
 import './utils/style.css'
 
@@ -19,25 +20,7 @@ function App() {
         <div className="row center">
         {
           dadosProdutos.produtos.map(produto =>(
-            <div key={produto._id} className="card">
-            <a href={`/produto/${produto._id}`}>
-             { /* image size: 680px by 830px */} 
-              <img className="medium" src={produto.image} alt={produto.nome} />
-            </a>
-            <div className="card-body">
-            <a href={`/produto/${produto._id}`}>
-                <h2>{produto.nome}</h2>
-              </a>
-              <div className="rating">
-                <span> <i className="fa fa-star"></i> </span>
-                <span> <i className="fa fa-star"></i> </span>
-                <span> <i className="fa fa-star"></i> </span>
-                <span> <i className="fa fa-star"></i> </span>
-                <span> <i className="fa fa-star"></i> </span>
-              </div>
-              <div className="preco">R$ {produto.preco}</div>
-            </div>
-          </div>
+           <Produtos key={produto._id} produto={produto}></Produtos>
           
           ))
         }

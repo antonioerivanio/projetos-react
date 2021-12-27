@@ -20,7 +20,7 @@ const dadosProdutos = {
         preco: 100,
         quantidadeEmEstoque: 20,
         marca: 'Adidas',
-        avaliacao: 4.0,
+        avaliacao: 1.0,
         numVisualizacoes: 10,
         descricao: 'high quality product',
       },
