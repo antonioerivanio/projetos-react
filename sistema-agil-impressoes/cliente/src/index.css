@@ -11,7 +11,7 @@ html {
   font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
   box-sizing: border-box;
 }
-#root{
+#root {
   height: 100%;
 }
 /*body {
@@ -109,4 +109,14 @@ img.medium {
 .rating span {
   color: #f0c040;
   margin: 0.1rem;
+}
+
+.rating span:last-child {
+  color: #404040;
+}
+.sucesso {
+  color: #20a020;
+}
+.erro {
+  color: #a02020;
 }
