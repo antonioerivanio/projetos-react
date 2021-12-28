@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Avaliacao from '../componentes/Avaliacao';
+
 import dadosProdutos from '../../../servidor/dadosProdutos';
 
 export default function TelaProduto() {
