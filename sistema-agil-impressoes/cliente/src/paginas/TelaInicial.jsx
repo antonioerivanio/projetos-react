@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import LoadingBox from '../componentes/mensages/LoadingBox';
 import MensageBox from '../componentes/mensages/MensageBox';
-
 import Produtos from '../componentes/Produtos';
 import api from '../utils/services/api';
 
 export default function TelaInicial() {
   const [produtos, setProdutos] = useState([]);
   const [loading, setloading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const buscarDadosProdutos = async () => {
@@ -16,10 +15,9 @@ export default function TelaInicial() {
         setloading(true);
 
         const { data } = await api.get('/api/produtos');
+
         setloading(false);
         setProdutos(data);
-
-        buscarDadosProdutos();
       } catch (err) {
         setError(err.message);
         setloading(false);
@@ -27,6 +25,8 @@ export default function TelaInicial() {
       }
       setloading(false);
     };
+
+    buscarDadosProdutos();
   }, []);
 
   return (
