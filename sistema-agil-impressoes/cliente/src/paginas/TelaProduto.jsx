@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Avaliacao from '../componentes/Avaliacao';
-
-import dadosProdutos from '../../../servidor/dadosProdutos';
+import axios from 'axios';
 
 export default function TelaProduto() {
+  const [produtos, setProdutos] = useState([]);
+
   let { id } = useParams();
-  const produto = dadosProdutos.produtos.find((x) => x._id === id);
+  const produto = produtos.find((x) => x._id === id);
   if (!produto) return <div>Produto Não Encontrado!</div>;
 
   return (
