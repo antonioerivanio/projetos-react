@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { listaProdutos } from '../actions/produtosActions';
 import LoadingBox from '../componentes/mensages/LoadingBox';
 import MensageBox from '../componentes/mensages/MensageBox';
 import Produtos from '../componentes/Produtos';
-import api from '../utils/services/api';
 
 export default function TelaInicial() {
-  const [produtos, setProdutos] = useState([]);
-  const [loading, setloading] = useState(false);
-  const [error, setError] = useState('');
-
+  const dispatch = useDispatch();
+  const produtoList = useSelector((state) => state.produtoList);
+  const { loading, error, produtos } = produtoList;
   useEffect(() => {
-    const buscarDadosProdutos = async () => {
-      try {
-        setloading(true);
-
-        const { data } = await api.get('/api/produtos');
-
-        setloading(false);
-        setProdutos(data);
-      } catch (err) {
-        setError(err.message);
-        setloading(false);
-        console.error('ops! ocorreu um erro' + err);
-      }
-      setloading(false);
-    };
-
-    buscarDadosProdutos();
+    dispatch(listaProdutos());
   }, []);
 
   return (
