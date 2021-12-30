@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import TelaInicial from './paginas/TelaInicial';
-import TelaProduto from './paginas/TelaProduto';
+import TelaDetalhesProduto from './paginas/TelaDetalhesProduto';
 
 import './utils/style.css';
 
@@ -24,7 +24,11 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<TelaInicial />} exact></Route>
-            <Route path="/produto/:id" element={<TelaProduto />} exact></Route>
+            <Route
+              path="/produto/:id"
+              element={<TelaDetalhesProduto />}
+              exact
+            ></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/

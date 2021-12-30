@@ -5,6 +5,19 @@ import { dadosProdutos } from './dadosProdutos.js';
 
 const app = express();
 app.use(cors());
+
+app.get('/api/produto/:id', (req, res) => {
+  console.log('req.params.id ' + req.params.id);
+  const produto = dadosProdutos.produtos.find(
+    (p) => p._id === req.params.id[1]
+  );
+  if (produto) {
+    res.send(produto);
+  } else {
+    res.status(404).send({ message: 'Produto não encontrado!' });
+  }
+});
+
 app.get('/api/produtos', (req, res) => {
   res.send(dadosProdutos.produtos);
 });

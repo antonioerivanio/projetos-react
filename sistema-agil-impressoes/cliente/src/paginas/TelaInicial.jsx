@@ -11,7 +11,7 @@ export default function TelaInicial() {
   const { loading, error, produtos } = produtoList;
   useEffect(() => {
     dispatch(listaProdutos());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="row center">
