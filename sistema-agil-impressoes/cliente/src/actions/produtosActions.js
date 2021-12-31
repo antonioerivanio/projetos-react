@@ -21,7 +21,7 @@ export const listaProdutos = () => async (dispatch) => {
 export const detalhesProdutoPorId = (produtoId) => async (dispatch) => {
   dispatch({ type: PRODUTO_DETALHES_REQUEST, payload: produtoId });
   try {
-    const { data } = await api.get(`/api/produto/:${produtoId}`);
+    const { data } = await api.get(`/api/produtos/:${produtoId}`);
     dispatch({ type: PRODUTO_DETALHES_SUCESSO, payload: data });
   } catch (error) {
     dispatch({

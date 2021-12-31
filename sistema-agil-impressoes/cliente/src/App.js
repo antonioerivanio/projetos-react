@@ -5,6 +5,7 @@ import TelaInicial from './paginas/TelaInicial';
 import TelaDetalhesProduto from './paginas/TelaDetalhesProduto';
 
 import './utils/style.css';
+import TelaCarrinhoCompras from './paginas/TelaCarrinhoCompras';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
         </header>
         <main>
           <Routes>
+            <Route
+              path="/carrinho/:id"
+              element={<TelaCarrinhoCompras />}
+            ></Route>
             <Route path="/" element={<TelaInicial />} exact></Route>
             <Route
               path="/produto/:id"

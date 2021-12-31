@@ -6,8 +6,7 @@ import { dadosProdutos } from './dadosProdutos.js';
 const app = express();
 app.use(cors());
 
-app.get('/api/produto/:id', (req, res) => {
-  console.log('req.params.id ' + req.params.id);
+app.get('/api/produtos/:id', (req, res) => {
   const produto = dadosProdutos.produtos.find(
     (p) => p._id === req.params.id[1]
   );
