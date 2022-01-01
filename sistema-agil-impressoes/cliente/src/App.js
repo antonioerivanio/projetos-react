@@ -1,25 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
 
 import TelaInicial from './paginas/TelaInicial';
 import TelaDetalhesProduto from './paginas/TelaDetalhesProduto';
 
 import './utils/style.css';
 import TelaCarrinhoCompras from './paginas/TelaCarrinhoCompras';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const carrinho = useSelector((state) => state.carrinhoCompras);
+  const { itensCarrinho } = carrinho;
   return (
     <Router>
       <div className="grid-container">
         <header className="row">
           <div>
-            <a className="brand" href="index.html">
-              amazona
-            </a>
+            <Link to="/" className="brand" href="index.html">
+              Gráfica Rápida - Agil Impressões
+            </Link>
           </div>
           <div>
-            <a href="cart.html">Cart</a>
-            <a href="signin.html">Sign In</a>
+            <Link to="cart.html">
+              Carrinho
+              {itensCarrinho.length > 0 && (
+                <span className="bagde">{itensCarrinho.length}</span>
+              )}
+            </Link>
+            <Link to="signin.html">Entrar</Link>
           </div>
         </header>
         <main>

@@ -1,0 +1,1 @@
+export const ADD_ITEM_CARRINHO = 'ADD_ITEM_CARRINHO';

@@ -7,9 +7,7 @@ const app = express();
 app.use(cors());
 
 app.get('/api/produtos/:id', (req, res) => {
-  const produto = dadosProdutos.produtos.find(
-    (p) => p._id === req.params.id[1]
-  );
+  const produto = dadosProdutos.produtos.find((p) => p._id === req.params.id);
   if (produto) {
     res.send(produto);
   } else {

@@ -14,8 +14,6 @@ export default function TelaDetalhesProduto(props) {
   const detalhesProduto = useSelector((state) => state.produtoDetalhes);
   const { loading, error, produto } = detalhesProduto;
 
-  //const produto = produtos.find((x) => x._id === id);
-
   useEffect(() => {
     dispatch(detalhesProdutoPorId(id));
   }, [dispatch, id]);
@@ -76,20 +74,22 @@ export default function TelaDetalhesProduto(props) {
                   {produto.quantidadeEmEstoque > 0 && (
                     <>
                       <li>
-                        <div className="row">quantidade</div>
-                        <div>
-                          <select
-                            value={quantidade}
-                            onChange={(e) => setQuantidade(e.target.value)}
-                          >
-                            {[...Array(produto.quantidadeEmEstoque).keys()].map(
-                              (qtd) => (
+                        <div className="row">
+                          quantidade
+                          <div>
+                            <select
+                              value={quantidade}
+                              onChange={(e) => setQuantidade(e.target.value)}
+                            >
+                              {[
+                                ...Array(produto.quantidadeEmEstoque).keys(),
+                              ].map((qtd) => (
                                 <option key={qtd + 1} value={qtd + 1}>
                                   {qtd + 1}
                                 </option>
-                              )
-                            )}
-                          </select>
+                              ))}
+                            </select>
+                          </div>
                         </div>
                       </li>
                       <li>
