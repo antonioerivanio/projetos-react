@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
   const { itensCarrinho } = carrinho;
+
   return (
     <Router>
       <div className="grid-container">
@@ -21,7 +22,7 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link to="cart.html">
+            <Link to="/carrinho/0">
               Carrinho
               {itensCarrinho.length > 0 && (
                 <span className="bagde">{itensCarrinho.length}</span>

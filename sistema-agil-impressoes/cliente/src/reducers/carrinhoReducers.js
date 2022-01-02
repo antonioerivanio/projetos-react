@@ -1,8 +1,11 @@
-import { ADD_ITEM_CARRINHO } from '../constantes/constantesCarrinhoCompras.js';
+import {
+  ADICIONAR_ITEM_CARRINHO,
+  REMOVER_ITEM_CARRINHO,
+} from '../constantes/constantesCarrinhoCompras.js';
 
 export const carrinhoReducer = (state = { itensCarrinho: [] }, action) => {
   switch (action.type) {
-    case ADD_ITEM_CARRINHO:
+    case ADICIONAR_ITEM_CARRINHO:
       const item = action.payload;
       const itemJaExiste = state.itensCarrinho.find(
         (x) => x.produto === item.produto
@@ -17,7 +20,13 @@ export const carrinhoReducer = (state = { itensCarrinho: [] }, action) => {
       } else {
         return { ...state, itensCarrinho: [...state.itensCarrinho, item] };
       }
-
+    case REMOVER_ITEM_CARRINHO:
+      return {
+        ...state,
+        itensCarrinho: state.itensCarrinho.filter(
+          (i) => i.produto !== action.payload
+        ),
+      };
     default:
       return state;
   }

@@ -7,11 +7,13 @@ const app = express();
 app.use(cors());
 
 app.get('/api/produtos/:id', (req, res) => {
-  const produto = dadosProdutos.produtos.find((p) => p._id === req.params.id);
-  if (produto) {
-    res.send(produto);
-  } else {
-    res.status(404).send({ message: 'Produto não encontrado!' });
+  if (req.params.id !== 'undefined' && req.params.id !== '0') {
+    const produto = dadosProdutos.produtos.find((p) => p._id === req.params.id);
+    if (produto) {
+      res.send(produto);
+    } else {
+      res.status(404).send({ message: 'Produto não encontrado!' });
+    }
   }
 });
 

@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { adicionarItemAoCarrinho } from '../actions/carrinhoCompraAction';
+import {
+  adicionarItemAoCarrinho,
+  removerItemCarrinho,
+} from '../actions/carrinhoCompraAction';
 import MensageBox from '../componentes/mensages/MensageBox';
 
 export default function TelaCarrinhoCompras(props) {
@@ -16,10 +19,14 @@ export default function TelaCarrinhoCompras(props) {
   const { itensCarrinho } = carrinho;
 
   useEffect(() => {
-    dispatch(adicionarItemAoCarrinho(produtoId, qty));
+    if (produtoId !== 'undefined')
+      dispatch(adicionarItemAoCarrinho(produtoId, qty));
   }, [dispatch, produtoId, qty]);
 
-  const removerItemCarrinhoHandler = (id) => {};
+  const removerItemCarrinhoHandler = (id) => {
+    console.log('teste');
+    dispatch(removerItemCarrinho(id));
+  };
 
   const finalizarCompraHandler = () => {
     //navegate
@@ -71,7 +78,7 @@ export default function TelaCarrinhoCompras(props) {
                   <div>
                     <button
                       type="button"
-                      onClick={removerItemCarrinhoHandler(item.produto)}
+                      onClick={() => removerItemCarrinhoHandler(item.produto)}
                     >
                       Delete
                     </button>
@@ -95,7 +102,7 @@ export default function TelaCarrinhoCompras(props) {
             <li>
               <button
                 type="button"
-                onClick={finalizarCompraHandler}
+                onClick={() => finalizarCompraHandler}
                 className="primary block"
                 disabled={itensCarrinho.length === 0}
               >
