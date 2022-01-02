@@ -13,7 +13,7 @@ export const adicionarItemAoCarrinho =
         preco: data.preco,
         quantidadeEmEstoque: data.quantidadeEmEstoque,
         produto: data._id,
-        quantidade,
+        quantidade: quantidade,
       },
     });
     localStorage.setItem(

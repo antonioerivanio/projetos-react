@@ -13,9 +13,7 @@ const initialState = {
       : [],
   },
 };
-/*const reducer = (state, action) => {
-  return { produtos: dadosProdutos.produtos };
-};*/
+
 const reducer = combineReducers({
   produtoList: produtoListReducer,
   produtoDetalhes: produtoDetalhesReducer,

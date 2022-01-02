@@ -10,8 +10,8 @@ export const carrinhoReducer = (state = { itensCarrinho: [] }, action) => {
       if (itemJaExiste) {
         return {
           ...state,
-          carrinthoItem: state.itensCarrinho.map((c) =>
-            c.produto === itemJaExiste.produdo ? item : c
+          itensCarrinho: state.itensCarrinho.map((c) =>
+            c.produto === itemJaExiste.produto ? item : c
           ),
         };
       } else {
