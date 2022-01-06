@@ -3,9 +3,9 @@ import expressAsyncHandler from 'express-async-handler';
 import { dados } from '../dados.js';
 import Usuario from '../models/usuarioModel.js';
 
-const usuarioRota = express.Router();
+const usuarioRouter = express.Router();
 
-usuarioRota.get(
+usuarioRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
     //await Usuario.remove({});
@@ -14,4 +14,4 @@ usuarioRota.get(
   })
 );
 
-export default usuarioRota;
+export default usuarioRouter;
