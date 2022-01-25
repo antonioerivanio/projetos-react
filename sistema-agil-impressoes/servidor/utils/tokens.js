@@ -6,6 +6,6 @@ export const gerarToken = (usuario) => {
       email: usuario.email,
       isAdmin: usuario.isAdmin,
     },
-    process.env.JWT_MENSAGE_SECRETA || 'mensagesecreta'
+    process.env.JWT_MENSAGE_SECRETA || 'mensagemsecreta'
   );
 };
