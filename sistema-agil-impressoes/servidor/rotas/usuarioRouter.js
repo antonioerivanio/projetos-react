@@ -14,4 +14,6 @@ usuarioRouter.get(
   })
 );
 
+usuarioRouter.post('/registrar');
+
 export default usuarioRouter;

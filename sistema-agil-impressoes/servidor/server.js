@@ -1,13 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-import usuarioRotas from '../servidor/rotas/usuarioRotas.js';
-import produtoRotas from './rotas/produtoRotas.js';
-import { dados } from './dados.js';
+import usuarioRouter from '../servidor/rotas/usuarioRouter.js';
+import produtoRouter from './rotas/produtoRouter.js';
+import bodyParser from 'body-parser';
 //import db from './utils/db.js';
 
+dotenv.config();
+
 const app = express();
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
+
 app.use(cors());
 const URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ecomerce';
 
@@ -23,8 +32,8 @@ mongoose.connect(
   }
 );
 
-app.use('/api/usuarios', usuarioRotas);
-app.use('/api/produtos', produtoRotas);
+app.use('/api/usuarios', usuarioRouter);
+app.use('/api/produtos', produtoRouter);
 
 app.get('/', (req, res) => {
   res.send('Servidor está pronto');

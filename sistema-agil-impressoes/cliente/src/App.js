@@ -39,7 +39,7 @@ function App() {
             ></Route>
             <Route path="/" element={<TelaInicial />} exact></Route>
             <Route
-              path="/produto/:id"
+              path="/produtos/:id"
               element={<TelaDetalhesProduto />}
               exact
             ></Route>
