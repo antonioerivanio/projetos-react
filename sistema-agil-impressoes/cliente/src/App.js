@@ -6,11 +6,20 @@ import TelaDetalhesProduto from './paginas/TelaDetalhesProduto';
 
 import './utils/style.css';
 import TelaCarrinhoCompras from './paginas/TelaCarrinhoCompras';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { EntrarConta } from './paginas/EntrarConta';
+import { sair } from './actions/usuariosAction';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
   const { itensCarrinho } = carrinho;
+  const entrarConta = useSelector((state) => state.entrarConta);
+  const { infoUsuario } = entrarConta;
+  const dispatch = useDispatch();
+
+  const saiContaHandler = () => {
+    dispatch(sair());
+  };
 
   return (
     <Router>
@@ -28,7 +37,22 @@ function App() {
                 <span className="bagde">{itensCarrinho.length}</span>
               )}
             </Link>
-            <Link to="signin.html">Entrar</Link>
+            {infoUsuario ? (
+              <div className="dropdown">
+                <Link to="#">
+                  {infoUsuario.nome}
+                  <i className="fa fa-caret-down"></i>
+                  {''}
+                </Link>
+                <ul className="dropdown-content">
+                  <Link to="#sair" onClick={saiContaHandler}>
+                    Sair
+                  </Link>
+                </ul>
+              </div>
+            ) : (
+              <Link to="/entrar">Entrar</Link>
+            )}
           </div>
         </header>
         <main>
@@ -43,6 +67,8 @@ function App() {
               element={<TelaDetalhesProduto />}
               exact
             ></Route>
+            <Route path="/entrar" element={<EntrarConta />} exact></Route>
+            <Route path="/sair" element={<EntrarConta />} exact></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/

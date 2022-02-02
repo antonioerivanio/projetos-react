@@ -12,12 +12,11 @@ dotenv.config();
 
 const app = express();
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 // parse application/json
 app.use(bodyParser.json());
-
 app.use(cors());
+
 const URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ecomerce';
 
 mongoose.connect(
