@@ -6,7 +6,7 @@ import { entrar } from '../actions/usuariosAction';
 import LoadingBox from '../componentes/mensages/LoadingBox';
 import MensageBox from '../componentes/mensages/MensageBox';
 
-export const EntrarConta = (props) => {
+export const TelaEntrarConta = (props) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -65,7 +65,7 @@ export const EntrarConta = (props) => {
           <label />
           <div>
             Novo Cliente?
-            <Link to="/registrar">registrar</Link>
+            <Link to="/cadastrar">Criar Conta</Link>
           </div>
         </div>
       </form>

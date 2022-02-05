@@ -5,10 +5,18 @@ import {
   produtoDetalhesReducer,
   produtoListReducer,
 } from '../reducers/produtosReducers';
-import { usuarioEntrarReducer } from '../reducers/usuariosReducers';
+import {
+  usuarioCadastroContaReducer,
+  usuarioEntrarReducer,
+} from '../reducers/usuariosReducers';
 
 const initialState = {
   entrarConta: {
+    infoUsuario: localStorage.getItem('infoUsuario')
+      ? localStorage.getItem('infoUsuario')
+      : null,
+  },
+  cadastrarConta: {
     infoUsuario: localStorage.getItem('infoUsuario')
       ? localStorage.getItem('infoUsuario')
       : null,
@@ -25,6 +33,7 @@ const reducer = combineReducers({
   produtoDetalhes: produtoDetalhesReducer,
   carrinhoCompras: carrinhoReducer,
   entrarConta: usuarioEntrarReducer,
+  cadastrarConta: usuarioCadastroContaReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

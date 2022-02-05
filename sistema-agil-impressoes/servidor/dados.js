@@ -88,4 +88,30 @@ export const dados = {
       descricao: 'high quality product',
     },
   ],
+  Caixa: [
+    {
+      id: 1,
+      tipo: 'Entrada',
+      desc: 'Saldo inicial',
+      forma: 'dinheiro',
+      valor: 100,
+      data: '03/02/2022',
+    },
+    {
+      id: 2,
+      tipo: 'Entrada',
+      desc: 'venda',
+      forma: 'dinheiro',
+      valor: 200,
+      data: '03/02/2022',
+    },
+    {
+      id: 3,
+      tipo: 'Saídas',
+      desc: 'Compra Mercadorias',
+      forma: 'cartão',
+      valor: 324,
+      data: '03/02/2022',
+    },
+  ],
 };

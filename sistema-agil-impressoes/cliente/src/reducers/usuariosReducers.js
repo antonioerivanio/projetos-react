@@ -1,4 +1,7 @@
 import {
+  USUARIO_CADASTRAR_CONTA_FAIL,
+  USUARIO_CADASTRAR_CONTA_REQUEST,
+  USUARIO_CADASTRAR_CONTA_SUCESS,
   USUARIO_ENTRAR_CONTA_FAIL,
   USUARIO_ENTRAR_CONTA_REQUEST,
   USUARIO_ENTRAR_CONTA_SUCESS,
@@ -15,6 +18,20 @@ export const usuarioEntrarReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case USUARIO_SAIR_CONTA:
       return {};
+
+    default:
+      return state;
+  }
+};
+
+export const usuarioCadastroContaReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USUARIO_CADASTRAR_CONTA_REQUEST:
+      return { loading: true };
+    case USUARIO_CADASTRAR_CONTA_SUCESS:
+      return { loading: false, infoUsuario: action.payload };
+    case USUARIO_CADASTRAR_CONTA_FAIL:
+      return { loading: false, error: action.payload };
 
     default:
       return state;

@@ -33,9 +33,37 @@ usuarioRouter.post(
       }
       return;
     } else {
-      res.status(404).send({ message: 'Usuário não encontrado' });
+      res.status(401).send({ message: 'Usuário não encontrado' });
     }
   })
 );
 
+usuarioRouter.post(
+  '/cadastrar',
+  expressAsyncHandler(async (req, res) => {
+    console.log('Teste requisição');
+    const usuario = new Usuario({
+      nome: req.body.nome,
+      email: req.body.email,
+      senha: bcrypt.hashSync(req.body.senha),
+    });
+
+    try {
+      const usuarioCriado = await usuario.save();
+
+      if (usuarioCriado) {
+        res.send({
+          _id: usuarioCriado._id,
+          nome: usuarioCriado.nome,
+          email: usuarioCriado.email,
+          token: gerarToken(usuarioCriado),
+        });
+      } else {
+        res.status(400).send({ mesage: 'Falha ao cadastrar usuário' });
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  })
+);
 export default usuarioRouter;

@@ -141,6 +141,10 @@ img.medium {
 .rating span:last-child {
   color: #404040;
 }
+/* Alert */
+.loading {
+  display: block !important;
+}
 .sucesso {
   color: #20a020;
 }

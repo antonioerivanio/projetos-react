@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import {
   adicionarItemAoCarrinho,
   removerItemCarrinho,
@@ -18,18 +18,22 @@ export default function TelaCarrinhoCompras(props) {
   const carrinho = useSelector((state) => state.carrinhoCompras);
   const { itensCarrinho } = carrinho;
 
+  const entrarConta = useSelector((state) => state.entrarConta);
+  const { infoUsuario } = entrarConta;
+
+  const navigate = useNavigate();
   useEffect(() => {
     if (produtoId !== 'undefined')
       dispatch(adicionarItemAoCarrinho(produtoId, qty));
   }, [dispatch, produtoId, qty]);
 
   const removerItemCarrinhoHandler = (id) => {
-    console.log('teste');
     dispatch(removerItemCarrinho(id));
   };
 
   const finalizarCompraHandler = () => {
-    //navegate
+    console.log('finalizar');
+    navigate('/entrar?redirect=/shipping');
   };
 
   return (
@@ -102,7 +106,7 @@ export default function TelaCarrinhoCompras(props) {
             <li>
               <button
                 type="button"
-                onClick={() => finalizarCompraHandler}
+                onClick={finalizarCompraHandler}
                 className="primary block"
                 disabled={itensCarrinho.length === 0}
               >

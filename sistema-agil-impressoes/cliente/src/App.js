@@ -7,8 +7,9 @@ import TelaDetalhesProduto from './paginas/TelaDetalhesProduto';
 import './utils/style.css';
 import TelaCarrinhoCompras from './paginas/TelaCarrinhoCompras';
 import { useDispatch, useSelector } from 'react-redux';
-import { EntrarConta } from './paginas/EntrarConta';
+import { TelaEntrarConta } from './paginas/TelaEntrarConta';
 import { sair } from './actions/usuariosAction';
+import { TelaCadastro } from './paginas/TelaCadastro';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
@@ -67,8 +68,8 @@ function App() {
               element={<TelaDetalhesProduto />}
               exact
             ></Route>
-            <Route path="/entrar" element={<EntrarConta />} exact></Route>
-            <Route path="/sair" element={<EntrarConta />} exact></Route>
+            <Route path="/entrar" element={<TelaEntrarConta />} exact></Route>
+            <Route path="/cadastrar" element={<TelaCadastro />} exact></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/
