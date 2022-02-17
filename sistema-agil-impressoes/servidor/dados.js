@@ -88,7 +88,7 @@ export const dados = {
       descricao: 'high quality product',
     },
   ],
-  Caixa: [
+  caixa: [
     {
       id: 1,
       tipo: 'Entrada',
@@ -112,6 +112,16 @@ export const dados = {
       forma: 'cartão',
       valor: 324,
       data: '03/02/2022',
+    },
+  ],
+  enderecos: [
+    {
+      nomeCompleto: 'Antonio Erivanio F da Cruz',
+      endereco: 'Rua barca Velha',
+      numero: 117,
+      cep: '60352590',
+      bairro: 'Quintino Cunha',
+      cidade: 'Fortaleza',
     },
   ],
 };

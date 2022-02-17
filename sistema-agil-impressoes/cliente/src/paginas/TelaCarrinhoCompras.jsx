@@ -9,22 +9,19 @@ import MensageBox from '../componentes/mensages/MensageBox';
 
 export default function TelaCarrinhoCompras(props) {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const params = useParams();
+  const { id: produtoId } = params;
 
   const location = useLocation();
   const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 
-  const produtoId = id;
   const carrinho = useSelector((state) => state.carrinhoCompras);
   const { itensCarrinho } = carrinho;
 
-  const entrarConta = useSelector((state) => state.entrarConta);
-  const { infoUsuario } = entrarConta;
-
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (produtoId !== 'undefined')
-      dispatch(adicionarItemAoCarrinho(produtoId, qty));
+    if (produtoId) dispatch(adicionarItemAoCarrinho(produtoId, qty));
   }, [dispatch, produtoId, qty]);
 
   const removerItemCarrinhoHandler = (id) => {
@@ -32,8 +29,7 @@ export default function TelaCarrinhoCompras(props) {
   };
 
   const finalizarCompraHandler = () => {
-    console.log('finalizar');
-    navigate('/entrar?redirect=/shipping');
+    navigate('/entrar?redirect=/endereco');
   };
 
   return (
@@ -52,6 +48,7 @@ export default function TelaCarrinhoCompras(props) {
                   <div>
                     <img src={item.imagem} alt={item.nome} className="small" />
                   </div>
+
                   <div className="min-30">
                     <Link to={`/api/produtos/${item.produto}`}>
                       {item.nome}

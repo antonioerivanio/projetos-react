@@ -2,6 +2,10 @@ import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { carrinhoReducer } from '../reducers/carrinhoReducers';
 import {
+  enderecoEnvioPedidoReducer,
+  enderecoEnvioReducer,
+} from '../reducers/enderecoEnvioPedidoReducers';
+import {
   produtoDetalhesReducer,
   produtoListReducer,
 } from '../reducers/produtosReducers';
@@ -12,11 +16,6 @@ import {
 
 const initialState = {
   entrarConta: {
-    infoUsuario: localStorage.getItem('infoUsuario')
-      ? localStorage.getItem('infoUsuario')
-      : null,
-  },
-  cadastrarConta: {
     infoUsuario: localStorage.getItem('infoUsuario')
       ? localStorage.getItem('infoUsuario')
       : null,
@@ -34,6 +33,7 @@ const reducer = combineReducers({
   carrinhoCompras: carrinhoReducer,
   entrarConta: usuarioEntrarReducer,
   cadastrarConta: usuarioCadastroContaReducer,
+  enderecoEnvioSalvo: enderecoEnvioPedidoReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

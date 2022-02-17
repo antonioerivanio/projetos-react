@@ -15,7 +15,7 @@ export function TelaCadastro(props) {
   const [isAdministrador, setIsAdministrador] = useState(false);
 
   let navigate = useNavigate();
-  const entrarConta = useSelector((state) => state.cadastrarConta);
+  const entrarConta = useSelector((state) => state.entrarConta);
   const { infoUsuario, loading, error } = entrarConta;
 
   const dispatch = useDispatch();
@@ -25,7 +25,6 @@ export function TelaCadastro(props) {
     if (senha !== confirmarSenha) {
       alert('Senha e Confirmar Senha devem ser iguais!');
     } else {
-      console.log(isAdministrador);
       dispatch(cadastrar(nome, email, senha));
     }
   };
@@ -85,7 +84,7 @@ export function TelaCadastro(props) {
         </div>
         <div>
           <label>
-            <button className="primary" type="submit" onClick={submitHandler}>
+            <button className="primary" type="submit">
               Entrar
             </button>
           </label>

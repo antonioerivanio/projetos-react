@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TelaEntrarConta } from './paginas/TelaEntrarConta';
 import { sair } from './actions/usuariosAction';
 import { TelaCadastro } from './paginas/TelaCadastro';
+import TelaEnderecoEnvioPedido from './paginas/TelaEnderecoEnvioPedido';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
@@ -32,7 +33,8 @@ function App() {
             </Link>
           </div>
           <div>
-            <Link to="/carrinho/0">
+            <Link to="/carrinho">
+              {' '}
               Carrinho
               {itensCarrinho.length > 0 && (
                 <span className="bagde">{itensCarrinho.length}</span>
@@ -58,10 +60,7 @@ function App() {
         </header>
         <main>
           <Routes>
-            <Route
-              path="/carrinho/:id"
-              element={<TelaCarrinhoCompras />}
-            ></Route>
+            <Route path="/carrinho" element={<TelaCarrinhoCompras />}></Route>
             <Route path="/" element={<TelaInicial />} exact></Route>
             <Route
               path="/produtos/:id"
@@ -70,6 +69,11 @@ function App() {
             ></Route>
             <Route path="/entrar" element={<TelaEntrarConta />} exact></Route>
             <Route path="/cadastrar" element={<TelaCadastro />} exact></Route>
+            <Route
+              path="/endereco"
+              element={<TelaEnderecoEnvioPedido />}
+              exact
+            ></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/

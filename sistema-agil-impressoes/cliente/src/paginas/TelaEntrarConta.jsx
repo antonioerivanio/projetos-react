@@ -10,6 +10,11 @@ export const TelaEntrarConta = (props) => {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+  const { search } = useLocation();
+  const redirectInUrl = new URLSearchParams(search).get('redirect');
+  console.log(redirectInUrl);
+  const redirect = redirectInUrl ? redirectInUrl : '/';
+
   let navigate = useNavigate();
 
   const entrarConta = useSelector((state) => state.entrarConta);
@@ -23,9 +28,9 @@ export const TelaEntrarConta = (props) => {
 
   useEffect(() => {
     if (infoUsuario) {
-      navigate('/', { replace: true });
+      navigate(redirect);
     }
-  });
+  }, [navigate, redirect, infoUsuario]);
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
