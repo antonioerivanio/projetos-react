@@ -1,7 +1,7 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 import { dados } from '../dados.js';
-import Usuario from '../models/usuarioModel.js';
+import Endereco from '../models/enderecoModel.js';
 import { gerarToken } from '../utils/tokens.js';
 import bcrypt from 'bcryptjs';
 
@@ -21,15 +21,20 @@ enderecoRouter.get(
 enderecoRouter.post(
   '/pedido/salvar',
   expressAsyncHandler(async (req, res) => {
-    console.log('ok');
-    const enderecoSalvo = await Endereco.save({
-      nomeCompleto,
-      endereco,
-      numero,
-      cep,
-      bairro,
-      cidade,
+    const enderecoNovo = new Endereco({
+      nomeCompleto: req.body.nomeCompleto,
+      endereco: req.body.endereco,
+      numero: req.body.numero,
+      cep: req.body.cep,
+      bairro: req.body.bairro,
+      cidade: req.body.cidade,
     });
+
+    const enderecoSalvo = await enderecoNovo.save(function (err) {
+      console.log(err);
+    });
+
+    console.log(enderecoSalvo);
 
     if (enderecoSalvo) {
       res.send({ message: 'Sucesso!' });
@@ -39,4 +44,5 @@ enderecoRouter.post(
     }
   })
 );
+
 export default enderecoRouter;

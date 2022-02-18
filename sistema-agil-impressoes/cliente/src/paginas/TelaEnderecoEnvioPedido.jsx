@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { salvar } from '../actions/enderecosAction';
 import { entrar } from '../actions/usuariosAction';
 import LoadingBox from '../componentes/mensages/LoadingBox';
@@ -10,18 +10,30 @@ import PassoAPassoCompra from '../componentes/PassaAPassoCompra';
 
 const TelaEnderecoEnvioPedido = (props) => {
   const dispatch = useDispatch();
-  const enderecoEnvioSalvo = useSelector((state) => state.enderecoEnvioSalvo);
-  const { infoUsuario, loading, error } = enderecoEnvioSalvo;
-  const [nomeCompleto, setNomeCompleto] = useState('');
-  const [endereco, setEndereco] = useState('');
-  const [numero, setNumero] = useState('');
-  const [cep, setCep] = useState('');
-  const [bairro, setBairro] = useState('');
-  const [cidade, setCidade] = useState('');
+  const navigate = useNavigate();
+  const entrarConta = useSelector((state) => state.entrarConta);
+  const { infoUsuario } = entrarConta;
+  const enderecoEnvioSalvo = useSelector((state) => state.endereco);
 
+  const [nomeCompleto, setNomeCompleto] = useState(
+    enderecoEnvioSalvo.nomeCompleto
+  );
+  const [endereco, setEndereco] = useState(enderecoEnvioSalvo.endereco);
+  const [numero, setNumero] = useState(enderecoEnvioSalvo.numero);
+  const [cep, setCep] = useState(enderecoEnvioSalvo.cep);
+  const [bairro, setBairro] = useState(enderecoEnvioSalvo.endereco);
+  const [cidade, setCidade] = useState(enderecoEnvioSalvo.cidade);
+  console.log(enderecoEnvioSalvo);
+
+  if (!infoUsuario) {
+    navigate('/entrar');
+  }
   const submitHandler = (e) => {
+    console.log(e);
     e.preventDefault();
-    dispatch(salvar(nomeCompleto, endereco, numero, cep, bairro, cidade));
+    dispatch(salvar({ nomeCompleto, endereco, numero, cep, bairro, cidade }));
+
+    navigate('/pagamento');
   };
 
   return (
@@ -29,18 +41,14 @@ const TelaEnderecoEnvioPedido = (props) => {
       <PassoAPassoCompra passo1 passo2></PassoAPassoCompra>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Cadastrar Conta</h1>
-        </div>
-        {loading && <LoadingBox></LoadingBox>}
-        {error && <MensageBox></MensageBox>}
-        <div>
-          <label htmlFor="nome">Nome Completo</label>
+          <label htmlFor="nome">Nome Completo 2 {nomeCompleto}</label>
           <input
             type="text"
             id="nome"
             placeholder="nome completo"
-            required
+            value={nomeCompleto}
             onChange={(e) => setNomeCompleto(e.target.value)}
+            required
           ></input>
         </div>
         <div>
@@ -50,6 +58,7 @@ const TelaEnderecoEnvioPedido = (props) => {
             id="endereco"
             placeholder="Rua I"
             required
+            value={endereco}
             onChange={(e) => setEndereco(e.target.value)}
           ></input>
         </div>
@@ -60,6 +69,7 @@ const TelaEnderecoEnvioPedido = (props) => {
             id="numero"
             placeholder="01"
             required
+            value={numero}
             onChange={(e) => setNumero(e.target.value)}
           ></input>
         </div>
@@ -69,6 +79,7 @@ const TelaEnderecoEnvioPedido = (props) => {
             type="text"
             id="cep"
             required
+            value={cep}
             onChange={(e) => setCep(e.target.value)}
           ></input>
         </div>
@@ -78,6 +89,7 @@ const TelaEnderecoEnvioPedido = (props) => {
             type="text"
             id="Bairro"
             required
+            value={bairro}
             onChange={(e) => setBairro(e.target.value)}
           ></input>
         </div>
@@ -87,13 +99,14 @@ const TelaEnderecoEnvioPedido = (props) => {
             type="text"
             id="cidade"
             required
+            value={cidade}
             onChange={(e) => setCidade(e.target.value)}
           ></input>
         </div>
         <div>
           <label>
-            <button className="primary" type="submit" onClick={submitHandler}>
-              Salvar
+            <button className="primary" type="submit">
+              Continua
             </button>
           </label>
         </div>

@@ -61,6 +61,10 @@ function App() {
         <main>
           <Routes>
             <Route path="/carrinho" element={<TelaCarrinhoCompras />}></Route>
+            <Route
+              path="/carrinho/:id"
+              element={<TelaCarrinhoCompras />}
+            ></Route>
             <Route path="/" element={<TelaInicial />} exact></Route>
             <Route
               path="/produtos/:id"

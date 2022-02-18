@@ -25,6 +25,9 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('itensCarrinho'))
       : [],
   },
+  endereco: localStorage.getItem('enderecoCompra')
+    ? JSON.parse(localStorage.getItem('enderecoCompra'))
+    : {},
 };
 
 const reducer = combineReducers({
@@ -33,7 +36,7 @@ const reducer = combineReducers({
   carrinhoCompras: carrinhoReducer,
   entrarConta: usuarioEntrarReducer,
   cadastrarConta: usuarioCadastroContaReducer,
-  enderecoEnvioSalvo: enderecoEnvioPedidoReducer,
+  endereco: enderecoEnvioPedidoReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

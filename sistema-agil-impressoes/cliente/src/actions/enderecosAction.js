@@ -7,33 +7,11 @@ import {
 } from '../constantes/constantesEnderecoEnvio.js';
 import api from '../utils/services/api';
 
-export const salvar =
-  (nomeCompleto, endereco, numero, cep, bairro, cidade) => async (dispatch) => {
-    // console.log(getState());
-    dispatch({
-      type: SALVAR_ENDERECO_ENVIO_REQUEST,
-    });
+export const salvar = (data) => async (dispatch, getState) => {
+  dispatch({
+    type: SALVAR_ENDERECO_ENVIO_SUCESSO,
+    payload: data,
+  });
 
-    const { data } = await api.post('/api/enderecos/pedido/salvar', {
-      nomeCompleto,
-      endereco,
-      numero,
-      cep,
-      bairro,
-      cidade,
-    });
-    try {
-      dispatch({
-        type: SALVAR_ENDERECO_ENVIO_SUCESSO,
-        payload: data,
-      });
-    } catch (error) {
-      dispatch({
-        type: SALVAR_ENDERECO_ENVIO_FALHA,
-        payload:
-          error.message && error.response.data.message
-            ? error.response.data.message
-            : error.message,
-      });
-    }
-  };
+  localStorage.setItem('enderecoCompra', JSON.stringify(data));
+};

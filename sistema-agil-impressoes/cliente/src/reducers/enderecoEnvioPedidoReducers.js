@@ -8,17 +8,10 @@ import {
   SALVAR_ENDERECO_ENVIO_SUCESSO,
 } from '../constantes/constantesEnderecoEnvio.js';
 
-export const enderecoEnvioPedidoReducer = (
-  state = { endereco: {} },
-  action
-) => {
+export const enderecoEnvioPedidoReducer = (state = {}, action) => {
   switch (action.type) {
-    case SALVAR_ENDERECO_ENVIO_REQUEST:
-      return { loading: true };
     case SALVAR_ENDERECO_ENVIO_SUCESSO:
-      return { loading: false, endereco: action.payload };
-    case SALVAR_ENDERECO_ENVIO_FALHA:
-      return { loading: false, error: action.payload };
+      return { ...state, endereco: action.payload };
     default:
       return state;
   }
