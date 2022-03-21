@@ -1,6 +1,7 @@
 import {
   ADICIONAR_ITEM_CARRINHO,
   REMOVER_ITEM_CARRINHO,
+  TIPO_PAGAMENTO,
 } from '../constantes/constantesCarrinhoCompras.js';
 
 export const carrinhoReducer = (state = { itensCarrinho: [] }, action) => {
@@ -27,6 +28,12 @@ export const carrinhoReducer = (state = { itensCarrinho: [] }, action) => {
           (i) => i.produto !== action.payload
         ),
       };
+
+    case TIPO_PAGAMENTO:
+        return {
+          ...state,
+          metodoPagamento: action.payload,
+        };
     default:
       return state;
   }

@@ -10,9 +10,17 @@ const usuarioRouter = express.Router();
 usuarioRouter.get(
   '/seed',
   expressAsyncHandler(async (req, res) => {
-    //await Usuario.remove({});
+    await Usuario.remove({});
     const usuarioCriado = await Usuario.insertMany(dados.usuarios);
     res.send({ usuarioCriado });
+  })
+);
+usuarioRouter.get(
+  '/consultar',
+  expressAsyncHandler(async (req, res) => {
+   
+    const usuario = await Usuario.find({});
+    res.send({ usuario});
   })
 );
 

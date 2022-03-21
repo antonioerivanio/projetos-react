@@ -24,10 +24,12 @@ const initialState = {
     itensCarrinho: localStorage.getItem('itensCarrinho')
       ? JSON.parse(localStorage.getItem('itensCarrinho'))
       : [],
+      metodoPagamento:'Paypal'
   },
   endereco: localStorage.getItem('enderecoCompra')
     ? JSON.parse(localStorage.getItem('enderecoCompra'))
     : {},
+
 };
 
 const reducer = combineReducers({
@@ -37,6 +39,7 @@ const reducer = combineReducers({
   entrarConta: usuarioEntrarReducer,
   cadastrarConta: usuarioCadastroContaReducer,
   endereco: enderecoEnvioPedidoReducer,
+
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

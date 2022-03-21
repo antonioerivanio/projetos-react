@@ -62,7 +62,7 @@ export const cadastrar = (nome, email, senha) => async (dispatch) => {
 export const sair = () => (dispatch) => {
   localStorage.removeItem('infoUsuario');
   localStorage.removeItem('itensCarrinho');
-
+  localStorage.removeItem('endereco');
   dispatch({
     type: USUARIO_SAIR_CONTA,
   });

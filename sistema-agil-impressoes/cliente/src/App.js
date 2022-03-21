@@ -11,6 +11,7 @@ import { TelaEntrarConta } from './paginas/TelaEntrarConta';
 import { sair } from './actions/usuariosAction';
 import { TelaCadastro } from './paginas/TelaCadastro';
 import TelaEnderecoEnvioPedido from './paginas/TelaEnderecoEnvioPedido';
+import TelaPagamento from './paginas/TelaPagamento';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
@@ -69,15 +70,16 @@ function App() {
             <Route
               path="/produtos/:id"
               element={<TelaDetalhesProduto />}
-              exact
+              
             ></Route>
-            <Route path="/entrar" element={<TelaEntrarConta />} exact></Route>
-            <Route path="/cadastrar" element={<TelaCadastro />} exact></Route>
+            <Route path="/entrar" element={<TelaEntrarConta />} ></Route>
+            <Route path="/cadastrar" element={<TelaCadastro />} ></Route>
             <Route
               path="/endereco"
               element={<TelaEnderecoEnvioPedido />}
-              exact
+              
             ></Route>
+            <Route path="/pagamento" element={<TelaPagamento />} ></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/

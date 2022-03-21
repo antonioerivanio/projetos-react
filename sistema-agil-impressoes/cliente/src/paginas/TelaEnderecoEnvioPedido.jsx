@@ -3,9 +3,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { salvar } from '../actions/enderecosAction';
-import { entrar } from '../actions/usuariosAction';
-import LoadingBox from '../componentes/mensages/LoadingBox';
-import MensageBox from '../componentes/mensages/MensageBox';
 import PassoAPassoCompra from '../componentes/PassaAPassoCompra';
 
 const TelaEnderecoEnvioPedido = (props) => {
@@ -23,7 +20,7 @@ const TelaEnderecoEnvioPedido = (props) => {
   const [cep, setCep] = useState(enderecoEnvioSalvo.cep);
   const [bairro, setBairro] = useState(enderecoEnvioSalvo.endereco);
   const [cidade, setCidade] = useState(enderecoEnvioSalvo.cidade);
-  console.log(enderecoEnvioSalvo);
+  console.log(infoUsuario);
 
   if (!infoUsuario) {
     navigate('/entrar');
