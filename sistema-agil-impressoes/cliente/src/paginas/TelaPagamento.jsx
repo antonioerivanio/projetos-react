@@ -20,7 +20,7 @@ const TelaPagamento = (props) => {
     console.log(e);
     e.preventDefault();
     dispatch(finalizarPagamento(metodoTipoPagamento));
-    navigate("/placeorder")
+    navigate("/detalhesPedido")
   
   };
 

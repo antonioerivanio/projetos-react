@@ -12,6 +12,7 @@ import { sair } from './actions/usuariosAction';
 import { TelaCadastro } from './paginas/TelaCadastro';
 import TelaEnderecoEnvioPedido from './paginas/TelaEnderecoEnvioPedido';
 import TelaPagamento from './paginas/TelaPagamento';
+import TelaDetalheCompra from './paginas/TelaDetalheCompra';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
@@ -80,6 +81,7 @@ function App() {
               
             ></Route>
             <Route path="/pagamento" element={<TelaPagamento />} ></Route>
+            <Route path="/detalhesPedido" element={<TelaDetalheCompra/>} ></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/
