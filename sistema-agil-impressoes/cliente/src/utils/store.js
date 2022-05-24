@@ -24,7 +24,7 @@ const initialState = {
     itensCarrinho: localStorage.getItem('itensCarrinho')
       ? JSON.parse(localStorage.getItem('itensCarrinho'))
       : [],
-      metodoPagamento:'Paypal'
+    metodoPagamento:'Paypal'
   },
   endereco: localStorage.getItem('enderecoCompra')
     ? JSON.parse(localStorage.getItem('enderecoCompra'))

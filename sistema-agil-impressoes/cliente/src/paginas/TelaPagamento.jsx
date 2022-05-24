@@ -26,7 +26,7 @@ const TelaPagamento = (props) => {
 
   return (
     <div>
-      <PassoAPassoCompra passo1 passo2></PassoAPassoCompra>
+      <PassoAPassoCompra passo1 passo2 passo3></PassoAPassoCompra>
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>Pagamento</h1>

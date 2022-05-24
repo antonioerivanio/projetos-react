@@ -23,7 +23,7 @@ export default function TelaDetalheCompra(props) {
 
     return (
         <div>
-            <PassoAPassoCompra passo1 passo2 passo3></PassoAPassoCompra>
+            <PassoAPassoCompra passo1 passo2 passo3 passo4></PassoAPassoCompra>
             <div className="row top">
                 
                 <div className="col-2"> 

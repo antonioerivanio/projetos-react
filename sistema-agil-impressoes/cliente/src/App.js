@@ -82,6 +82,7 @@ function App() {
             ></Route>
             <Route path="/pagamento" element={<TelaPagamento />} ></Route>
             <Route path="/detalhesPedido" element={<TelaDetalheCompra/>} ></Route>
+            
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/
