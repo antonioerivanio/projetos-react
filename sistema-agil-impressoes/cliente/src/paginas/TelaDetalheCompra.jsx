@@ -1,6 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { criarPedido } from '../actions/pedidoAction';
 import PassoAPassoCompra from '../componentes/PassaAPassoCompra';
 
 
@@ -20,7 +21,11 @@ export default function TelaDetalheCompra(props) {
     carrinhoCompras.precoEnvio  = carrinhoCompras.preco > 100 ? paraPreco(0) : paraPreco(10);
     carrinhoCompras.precoImposto = Number(paraPreco(0.15* carrinhoCompras.precoItens)).toFixed(2);
     carrinhoCompras.precoTotal = Number(carrinhoCompras.precoItens + carrinhoCompras.precoEnvio + carrinhoCompras.precoImposto).toFixed(2);
-
+    const dispatch = useDispatch();
+    const fazerPedidoHandler= () =>
+    {
+        dispatch(criarPedido({...carrinhoCompras, itensPedido: carrinhoCompras.itensCarrinho}))
+    }
     return (
         <div>
             <PassoAPassoCompra passo1 passo2 passo3 passo4></PassoAPassoCompra>

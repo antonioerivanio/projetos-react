@@ -7,6 +7,7 @@ import usuarioRouter from '../servidor/rotas/usuarioRouter.js';
 import produtoRouter from './rotas/produtoRouter.js';
 import enderecoRouter from './rotas/enderecoRouter.js';
 import bodyParser from 'body-parser';
+import pedidoRouter from './rotas/pedidoRouter.js';
 //import db from './utils/db.js';
 
 dotenv.config();
@@ -35,6 +36,7 @@ mongoose.connect(
 app.use('/api/usuarios', usuarioRouter);
 app.use('/api/produtos', produtoRouter);
 app.use('/api/enderecos', enderecoRouter);
+app.use('/api/pedidos', pedidoRouter);
 
 app.get('/', (req, res) => {
   res.send('Servidor está pronto');
