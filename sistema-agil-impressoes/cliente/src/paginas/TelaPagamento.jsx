@@ -12,15 +12,15 @@ const TelaPagamento = (props) => {
   const endereco = useSelector(state => state.endereco)
   const dispatch = useDispatch();
 
-
+  console.log(endereco)
   if(!endereco.enderecoCompra){
     navigate('/endereco')
   }
   const submitHandler = (e) => {
-    console.log(e);
+    console.log(metodoTipoPagamento);
     e.preventDefault();
     dispatch(finalizarPagamento(metodoTipoPagamento));
-    navigate("/detalhesPedido")
+    //navigate("/pedido")
   
   };
 
@@ -37,7 +37,7 @@ const TelaPagamento = (props) => {
              name="metodoPagamento"
              required checked onChange={(e) => setMetodoTipoPagamento(e.target.value)}
           ></input> 
-          <label htmlFor='paypal'> Paypa </label></div>
+          <label htmlFor='paypal'> Paypal </label></div>
            <div>
             <input type="radio" id="dinheiro" value="Dinheiro"
              name="metodoPagamento"
@@ -45,7 +45,7 @@ const TelaPagamento = (props) => {
           ></input> <label htmlFor='dinheiro'> Dinheiro </label></div>
          <div>
           <label>
-            <button className="primary" type="submit" onClick={submitHandler}>
+            <button className="primary" type="submit">
               Pagar
             </button>
           </label>

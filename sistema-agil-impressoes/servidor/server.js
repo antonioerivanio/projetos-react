@@ -2,11 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
 import usuarioRouter from '../servidor/rotas/usuarioRouter.js';
 import produtoRouter from './rotas/produtoRouter.js';
 import enderecoRouter from './rotas/enderecoRouter.js';
-import bodyParser from 'body-parser';
 import pedidoRouter from './rotas/pedidoRouter.js';
 //import db from './utils/db.js';
 

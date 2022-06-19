@@ -47,7 +47,7 @@ export const cadastrar = (nome, email, senha) => async (dispatch) => {
       type: USUARIO_CADASTRAR_CONTA_SUCESS,
       payload: data,
     });
-    // localStorage.setItem('infoUsuario', JSON.stringify(data));
+    localStorage.setItem('infoUsuario', JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USUARIO_CADASTRAR_CONTA_FAIL,
@@ -62,7 +62,8 @@ export const cadastrar = (nome, email, senha) => async (dispatch) => {
 export const sair = () => (dispatch) => {
   localStorage.removeItem('infoUsuario');
   localStorage.removeItem('itensCarrinho');
-  localStorage.removeItem('endereco');
+  localStorage.removeItem('enderecoCompra');
+
   dispatch({
     type: USUARIO_SAIR_CONTA,
   });

@@ -12,7 +12,8 @@ import { sair } from './actions/usuariosAction';
 import { TelaCadastro } from './paginas/TelaCadastro';
 import TelaEnderecoEnvioPedido from './paginas/TelaEnderecoEnvioPedido';
 import TelaPagamento from './paginas/TelaPagamento';
-import TelaDetalheCompra from './paginas/TelaDetalheCompra';
+
+import TelaPedido from './paginas/TelaPedido';
 
 function App() {
   const carrinho = useSelector((state) => state.carrinhoCompras);
@@ -21,7 +22,7 @@ function App() {
   const { infoUsuario } = entrarConta;
   const dispatch = useDispatch();
 
-  const saiContaHandler = () => {
+  const sairContaHandler = () => {
     dispatch(sair());
   };
 
@@ -50,7 +51,7 @@ function App() {
                   {''}
                 </Link>
                 <ul className="dropdown-content">
-                  <Link to="#sair" onClick={saiContaHandler}>
+                  <Link to="#sair" onClick={sairContaHandler}>
                     Sair
                   </Link>
                 </ul>
@@ -81,8 +82,8 @@ function App() {
               
             ></Route>
             <Route path="/pagamento" element={<TelaPagamento />} ></Route>
-            <Route path="/detalhesPedido" element={<TelaDetalheCompra/>} ></Route>
-            
+            <Route path="/pedido" element={<TelaPedido />} ></Route>
+            <Route path="/pedido/id" element={<TelaDetalhesProduto />} ></Route>
           </Routes>
         </main>
         <footer className="row center">All right reserved</footer>/

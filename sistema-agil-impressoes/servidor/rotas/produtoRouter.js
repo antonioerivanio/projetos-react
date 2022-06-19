@@ -11,6 +11,7 @@ produtoRoter.get('/seed', async (req, res) => {
   res.send({ produtoSalvo });
 });
 
+
 produtoRoter.get('/', async (req, res) => {
   const produtos = await Produto.find();
   if (produtos) res.send(produtos);

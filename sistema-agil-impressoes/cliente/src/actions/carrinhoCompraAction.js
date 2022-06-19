@@ -1,6 +1,6 @@
 import {
   ADICIONAR_ITEM_CARRINHO,
-  FINALIZAR_PAGAMENTO,
+ 
   REMOVER_ITEM_CARRINHO,
   TIPO_PAGAMENTO,
 } from '../constantes/constantesCarrinhoCompras.js';
@@ -40,6 +40,7 @@ export const removerItemCarrinho = (produtoId) => (dispatch, getState) => {
 
 
 export const finalizarPagamento = (data) => (dispatch) => {
+  console.log(data)
   dispatch({
     type: TIPO_PAGAMENTO,
     payload: data,

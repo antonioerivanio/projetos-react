@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { carrinhoReducer } from '../reducers/carrinhoReducers';
 import {
   enderecoEnvioPedidoReducer,
-  enderecoEnvioReducer,
 } from '../reducers/enderecoEnvioPedidoReducers';
+import { detalhesPedidoReducer, detalhesReducer, pedidoReducer } from '../reducers/pedidoReducers';
 import {
   produtoDetalhesReducer,
   produtoListReducer,
@@ -17,7 +17,7 @@ import {
 const initialState = {
   entrarConta: {
     infoUsuario: localStorage.getItem('infoUsuario')
-      ? localStorage.getItem('infoUsuario')
+      ? JSON.parse(localStorage.getItem('infoUsuario'))
       : null,
   },
   carrinhoCompras: {
@@ -26,7 +26,7 @@ const initialState = {
       : [],
     metodoPagamento:'Paypal'
   },
-  endereco: localStorage.getItem('enderecoCompra')
+  endereco: localStorage.getItem('enderecoEntrega')
     ? JSON.parse(localStorage.getItem('enderecoCompra'))
     : {},
 
@@ -39,6 +39,8 @@ const reducer = combineReducers({
   entrarConta: usuarioEntrarReducer,
   cadastrarConta: usuarioCadastroContaReducer,
   endereco: enderecoEnvioPedidoReducer,
+  pedido: pedidoReducer,
+  pedidoDetalhes: detalhesPedidoReducer,
 
 });
 

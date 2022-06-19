@@ -10,11 +10,11 @@ const enderecoRouter = express.Router();
 enderecoRouter.get(
   '/pedido/consultar',
   expressAsyncHandler(async (req, res) => {
-    console.log('ok');
+  
     //await Usuario.remove({});
-    const usuarioCriado = await Usuario.find();
+    const endereco = await Endereco.find();
 
-    res.send({ usuarioCriado });
+    res.send({ endereco });
   })
 );
 
